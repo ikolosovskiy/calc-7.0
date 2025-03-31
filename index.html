@@ -421,13 +421,10 @@
     familyPays = Math.max(0, familyPays);
     familyPays = parseFloat(familyPays.toFixed(2));
 
-    // --- Відображення результатів ---
-    let resultHtml = '<div class="title">Результати розрахунку*</div>';
-    if (subsidy === 0) {
-        resultHtml += `<p><strong>Орієнтовний розмір субсидії:</strong> <strong style="color: #ffdddd;">0.00 грн</strong></p>`;
-    } else {
-        resultHtml += `<p><strong>Орієнтовний розмір субсидії:</strong> <strong style="color: #ffdddd;">${subsidy.toFixed(2)} грн</strong></p>`;
-    }
+   let resultHtml = '<div class="title">Результати розрахунку*</div>';
+
+    resultHtml += `<p><strong>Орієнтовний розмір субсидії:</strong> <strong>${subsidy.toFixed(2)} грн</strong></p>`;
+ 
     resultHtml += `<p><strong>Сума, яку сплачує родина:</strong> ${familyPays.toFixed(2)} грн</p>`;
     resultHtml += `<p><strong>Гранична вартість оренди житла:</strong> ${maxAllowedRent.toFixed(2)} грн</p>`;
     resultHtml += '<p class="disclaimer">*Цей розрахунок є орієнтовним і не гарантує отримання субсидії.</p>';

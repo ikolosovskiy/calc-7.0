@@ -439,14 +439,14 @@
     let subsidy = Math.max(0, subsidy_calc);
     subsidy = parseFloat(subsidy.toFixed(2));
 
-    // 7. Amount Family Pays
-    let familyPays;
-    if (income > actualRent && actualRent > maxAllowedRent) {
-        familyPays = income - subsidy;
-    } else {
-        familyPays = actualRent - subsidy;
-    }
+       // 7. Amount Family Pays (Виправлена логіка)
+    let familyPays = actualRent - subsidy;
+    // Переконуємося, що сума доплати не може бути від'ємною
+    // (це може статись, якщо субсидія > оренди, хоча за поточною логікою це малоймовірно)
     familyPays = Math.max(0, familyPays);
+    // Переконуємося, що сума доплати не перевищує фактичну оренду
+    // (Цей рядок стає надлишковим при правильному розрахунку, але залишаємо для 100% гарантії)
+    familyPays = Math.min(familyPays, actualRent);
     familyPays = parseFloat(familyPays.toFixed(2));
 
     // --- Display Results (Adjusted Output) ---
